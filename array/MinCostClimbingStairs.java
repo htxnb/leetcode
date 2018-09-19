@@ -23,6 +23,7 @@ package leetcode.array;
  **/
 public class MinCostClimbingStairs {
     public int minCostClimbingStairs(int[] cost) {
+
         return 0;
     }
 }

@@ -1,5 +1,6 @@
 package leetcode.array;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,50 @@ import java.util.List;
  * @Version 1.0
  **/
 public class PositionOfLargerGroup {
-    public List<List<Integer>> largeGroupPositions(String S) {
-        return null;
+    /**
+     * 思路是left(前指针)，right(后指针)指针遍历数组;若前后指针指向元素相等，则right++，且若right-left +1==3的时候，标志位置为true;
+     * 不等则更新两个指针位置；当不等且标志位为true时，输出left,right(代表一个较大数组)，然后更新left,right指针
+     * @param S
+     * @return
+     */
+    public static List<List<Integer>> largeGroupPositions(String S) {
+        int left = 0,right = 1;
+        char[] chars = S.toCharArray();
+        boolean isAdd = false;
+        List<List<Integer>> lists = new ArrayList<>();
+        while(right <= chars.length){
+            //添加条件right == chars.length是为了较大分组在末尾
+            if(right == chars.length || chars[left] != chars[right]){
+                if(isAdd){
+//                    添加较大分组
+                    List<Integer> list = new ArrayList<>();
+                    list.add(left);
+                    list.add(right - 1);
+                    lists.add(list);
+//                    更新指针和标志位
+                    isAdd = false;
+                    left = right;
+                    right++;
+                    continue;
+                }
+                right++;
+                left = right -1;
+            }else {
+//                满足条件时，将标志位置为true
+                if(right - left + 1 == 3){
+                    isAdd = true;
+                }
+                right++;
+            }
+        }
+        return lists;
+    }
+
+    public static void main(String[] args) {
+        String s = "bababbabaa";
+        List<List<Integer>> lists = largeGroupPositions(s);
+        for(List list: lists){
+            System.out.println(list);
+        }
     }
 }

@@ -1,5 +1,7 @@
 package leetcode.array;
 
+import java.util.Arrays;
+
 /**
  * 问题描述：
  * 给定两个有序整数数组 nums1 和 nums2，将 nums2 合并到 nums1 中，使得 num1 成为一个有序数组。
@@ -17,7 +19,29 @@ package leetcode.array;
  * @Version 1.0
  **/
 public class MergeSortedArray {
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+        int current_num1 = m-1,current_num2 = n-1,sortedIndex = m+n;
+        while(current_num1 >= 0 && current_num2 >= 0){
+            if(nums1[current_num1] >= nums2[current_num2]){
+                nums1[--sortedIndex] = nums1[current_num1--];
+            }else{
+                nums1[--sortedIndex] = nums2[current_num2--];
+            }
+        }
 
+        while(current_num1 >= 0){
+            nums1[--sortedIndex] = nums1[current_num1--];
+        }
+
+        while(current_num2 >= 0){
+            nums1[--sortedIndex] = nums2[current_num2--];
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] ints = {1,2,5,0,0,0,0};
+        int[] ints1 = {1,2,5,6};
+        merge(ints,3,ints1,4);
+        System.out.println(Arrays.toString(ints));
     }
 }
