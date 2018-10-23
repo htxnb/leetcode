@@ -1,7 +1,8 @@
-package leetcode.tree;
+package algorithm.leetcode.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 问题描述：
@@ -37,6 +38,28 @@ public class BinaryTreePostorderTraversal {
         }
     }
 
-//    非递归实现
+//    非递归实现，双栈法
+    public List<Integer> postorderTraversal2(TreeNode root) {
+        ArrayList<Integer> postorderTraversal = new ArrayList<>();
+        if(root != null) {
+            Stack<TreeNode> pushstack = new Stack<>();
+            pushstack.push(root);
+            Stack<TreeNode> popstack = new Stack<>();
+            while (!pushstack.isEmpty()) {
+                TreeNode pop = pushstack.pop();
+                popstack.push(pop);
+                if (pop.left != null) {
+                    pushstack.push(pop.left);
+                }
+                if (pop.right != null) {
+                    pushstack.push(pop.right);
+                }
+            }
 
+            while (!popstack.isEmpty()) {
+                postorderTraversal.add(popstack.pop().val);
+            }
+        }
+        return postorderTraversal;
+    }
 }

@@ -1,7 +1,8 @@
-package leetcode.tree;
+package algorithm.leetcode.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 问题描述：给定一个二叉树，返回它的 前序 遍历。
@@ -38,7 +39,30 @@ public class BinaryTreePreorderTraversal {
     }
     
 //    非递归实现
-    public List<Integer> preorderTraversal2(TreeNode root) {
-        return null;
+    public static List<Integer> preorderTraversal2(TreeNode root) {
+        ArrayList<Integer> preorderTraversal = new ArrayList<>();
+        if(root == null){
+            return preorderTraversal;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode pointer = root;
+        while(pointer != null || !stack.isEmpty()){
+           while(pointer != null){
+               preorderTraversal.add(pointer.val);
+               stack.push(pointer);
+               pointer = pointer.left;
+           }
+           if(!stack.isEmpty()){
+               TreeNode pop = stack.pop();
+               pointer = pop.right;
+           }
+        }
+        return preorderTraversal;
+    }
+
+    public static void main(String[] args) {
+        TreeNode treeNode3 = new TreeNode(3);
+        TreeNode treeNode1 = new TreeNode(1,null,new TreeNode(2,treeNode3,null));
+        preorderTraversal2(treeNode1);
     }
 }

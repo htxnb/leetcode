@@ -1,8 +1,9 @@
-package leetcode.tree;
+package algorithm.leetcode.tree;
 
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 问题描述：
@@ -38,8 +39,39 @@ public class BinaryTreeInorderTraversal {
         }
     }
 
-//    非递归实现
+//    非递归实现,使用栈
+    public static List<Integer> inorderTraversal2(TreeNode root) {
+        List<Integer> inorderTraversal = new ArrayList<>();
+        if(root == null){
+            return inorderTraversal;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+//        指针
+        TreeNode pointer = root;
+        while(!stack.isEmpty() || pointer != null){
+            while(pointer != null){
+                stack.push(pointer);
+                pointer = pointer.left;
+                continue;
+            }
 
+            if(!stack.isEmpty()){
+                TreeNode pop = stack.pop();
+                inorderTraversal.add(pop.val);
+                pointer = pop.right;
+            }
+
+        }
+        return inorderTraversal;
+
+
+    }
+
+    public static void main(String[] args) {
+        TreeNode treeNode3 = new TreeNode(3);
+        TreeNode treeNode1 = new TreeNode(1,null,new TreeNode(2,treeNode3,null));
+        inorderTraversal2(treeNode1);
+    }
 
 
 }

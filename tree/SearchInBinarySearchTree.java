@@ -1,4 +1,4 @@
-package leetcode.tree;
+package algorithm.leetcode.tree;
 
 /**
  * 二叉搜索树中的搜索
@@ -27,6 +27,6 @@ package leetcode.tree;
  **/
 public class SearchInBinarySearchTree {
     public TreeNode searchBST(TreeNode root, int val) {
-        
+        return null;
     }
 }

@@ -1,6 +1,4 @@
-package leetcode.tree;
-
-import sun.reflect.generics.tree.Tree;
+package algorithm.leetcode.tree;
 
 /**
  *问题描述：

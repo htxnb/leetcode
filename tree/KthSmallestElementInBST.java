@@ -1,4 +1,4 @@
-package leetcode.tree;
+package algorithm.leetcode.tree;
 
 /**
  * 二叉搜索树中第K小的元素
@@ -33,6 +33,6 @@ package leetcode.tree;
  **/
 public class KthSmallestElementInBST {
     public int kthSmallest(TreeNode root, int k) {
-
+        return 0;
     }
 }

@@ -1,4 +1,4 @@
-package leetcode.tree;
+package algorithm.leetcode.tree;
 
 /**
  * 问题描述：
@@ -31,5 +31,6 @@ package leetcode.tree;
 public class ConvertSortedArrayToBinarySearchTree {
     public TreeNode sortedArrayToBST(int[] nums) {
 
+        return null;
     }
 }

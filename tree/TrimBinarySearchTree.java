@@ -1,4 +1,4 @@
-package leetcode.tree;
+package algorithm.leetcode.tree;
 
 /**
  * 修剪二叉搜索树
@@ -39,6 +39,6 @@ package leetcode.tree;
  **/
 public class TrimBinarySearchTree {
     public TreeNode trimBST(TreeNode root, int L, int R) {
-
+        return null;
     }
 }
